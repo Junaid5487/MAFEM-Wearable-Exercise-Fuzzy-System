@@ -54,11 +54,8 @@ def extract_features(acc, gyr, hr, hr_raw, window_size=50,
         peaks, _ = find_peaks(acc_mag, height=0.5, distance=5)
         step_count = len(peaks)
 
-        # 2. Speed - cumulative sum of acc magnitude (proxy)
-        try:
-            speed = np.trapezoid(acc_mag) / window_size
-        except AttributeError:
-            speed = np.trapz(acc_mag) / window_size
+        # 2. Speed - cumulative sum of acc magnitude (proxy) using trapezoidal rule
+        speed = (0.5 * (acc_mag[0] + acc_mag[-1]) + np.sum(acc_mag[1:-1])) / window_size
 
         # 3. HRV - std of heart rate in window
         hrv = np.std(hr_raw_window)
