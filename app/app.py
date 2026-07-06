@@ -25,42 +25,83 @@ st.set_page_config(
 )
 
 # ----------------------------------------------------
-# Custom Styling
+# Custom Styling (FACE Prep / Neo-Brutalist Vibe)
 # ----------------------------------------------------
 st.markdown("""
 <style>
-    .main-title {
-        font-family: 'Outfit', 'Inter', sans-serif;
-        color: #FFFFFF;
-        font-weight: 700;
-        font-size: 2.8rem;
-        background: linear-gradient(135deg, #378ADD, #9B5DE5);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 0.1rem;
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;600;800&display=swap');
+    
+    .stApp {
+        background-color: #FFFFFF !important;
     }
-    .subtitle {
-        font-family: 'Inter', sans-serif;
-        color: #A0AEC0;
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
+    
+    /* Neo-brutalist buttons styling */
+    div.stButton > button, div.stDownloadButton > button {
+        background-color: #E04B33 !important;
+        color: #FFFFFF !important;
+        border: 3px solid #000000 !important;
+        border-radius: 8px !important;
+        box-shadow: 3px 3px 0px #000000 !important;
+        font-weight: 800 !important;
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 1.1rem !important;
+        padding: 8px 24px !important;
+        transition: all 0.1s ease !important;
     }
+    div.stButton > button:hover, div.stDownloadButton > button:hover {
+        background-color: #FF5A36 !important;
+        transform: translate(-2px, -2px) !important;
+        box-shadow: 5px 5px 0px #000000 !important;
+        color: #FFFFFF !important;
+    }
+    div.stButton > button:active, div.stDownloadButton > button:active {
+        transform: translate(2px, 2px) !important;
+        box-shadow: 1px 1px 0px #000000 !important;
+    }
+    
+    /* Neo-brutalist cards */
     .metric-card {
-        background-color: #1A202C;
-        border-radius: 8px;
-        padding: 15px;
-        border: 1px solid #2D3748;
+        background-color: #FFFFFF !important;
+        border-radius: 12px !important;
+        padding: 18px !important;
+        border: 3px solid #000000 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
+        color: #000000 !important;
+        margin-bottom: 12px !important;
     }
     .metric-label {
-        font-size: 0.85rem;
-        color: #718096;
-        text-transform: uppercase;
-        font-weight: bold;
+        font-size: 0.9rem !important;
+        color: #4A5568 !important;
+        text-transform: uppercase !important;
+        font-weight: 800 !important;
+        font-family: 'Outfit', 'Inter', sans-serif !important;
     }
     .metric-value {
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #E2E8F0;
+        font-size: 2.1rem !important;
+        font-weight: 900 !important;
+        color: #000000 !important;
+        font-family: 'Outfit', 'Inter', sans-serif !important;
+    }
+    
+    /* Input and Select fields */
+    div[data-baseweb="input"] {
+        border: 3px solid #000000 !important;
+        border-radius: 8px !important;
+        background-color: #FFFFFF !important;
+    }
+    div[data-baseweb="select"] {
+        border: 3px solid #000000 !important;
+        border-radius: 8px !important;
+        background-color: #FFFFFF !important;
+    }
+    
+    /* Alert / coaching box */
+    div.stAlert {
+        border: 3px solid #000000 !important;
+        border-radius: 8px !important;
+        box-shadow: 3px 3px 0px #000000 !important;
+        background-color: #F7FAFC !important;
+        color: #000000 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -68,8 +109,17 @@ st.markdown("""
 # ----------------------------------------------------
 # Title and Header
 # ----------------------------------------------------
-st.markdown("<div class='main-title'>MAFEM</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Wearable Sensor-Based Exercise Monitoring System Using a Multi-Attribute Fuzzy Evaluation Model</div>", unsafe_allow_html=True)
+st.markdown("""
+<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px;">
+    <div style="background-color: #E04B33; border: 3px solid #000000; border-radius: 12px; padding: 12px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 4px 4px 0px #000000;">
+        <span style="font-size: 2.2rem;">🏃</span>
+    </div>
+    <div>
+        <h1 style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; color: #000000; line-height: 1.1;">MAFEM</h1>
+        <p style="margin: 0; font-family: 'Inter', sans-serif; color: #4A5568; font-size: 1.15rem; font-weight: 600;">Wearable Sensor-Based Exercise Monitoring System</p>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # ----------------------------------------------------
 # Sidebar Configuration
@@ -146,29 +196,29 @@ def get_plotly_gauge(score, threshold):
         mode = "gauge+number",
         value = score,
         domain = {'x': [0, 1], 'y': [0, 1]},
-        title = {'text': "Fuzzy Intensity Score", 'font': {'size': 20, 'color': '#A0AEC0'}},
+        title = {'text': "Fuzzy Intensity Score", 'font': {'size': 20, 'color': '#000000', 'family': 'Outfit', 'weight': 'bold'}},
         gauge = {
-            'axis': {'range': [0, 1], 'tickwidth': 1, 'tickcolor': "#4A5568"},
-            'bar': {'color': "#805AD5"},
-            'bgcolor': "#1A202C",
-            'borderwidth': 2,
-            'bordercolor': "#2D3748",
+            'axis': {'range': [0, 1], 'tickwidth': 2, 'tickcolor': "#000000"},
+            'bar': {'color': "#E04B33"},
+            'bgcolor': "#FFFFFF",
+            'borderwidth': 3,
+            'bordercolor': "#000000",
             'steps': [
-                {'range': [0, low_high], 'color': '#1E3A8A'},       # LOW - Dark Blue
-                {'range': [low_high, med_high], 'color': '#78350F'},  # MEDIUM - Dark Orange
-                {'range': [med_high, 1], 'color': '#991B1B'}         # HIGH - Dark Red
+                {'range': [0, low_high], 'color': '#BEE3F8'},       # LOW - Light Blue
+                {'range': [low_high, med_high], 'color': '#FEEBC8'},  # MEDIUM - Light Orange
+                {'range': [med_high, 1], 'color': '#FED7D7'}         # HIGH - Light Red
             ],
             'threshold': {
-                'line': {'color': "#FFFFFF", 'width': 4},
+                'line': {'color': "#000000", 'width': 4},
                 'thickness': 0.75,
                 'value': score
             }
         }
     ))
     fig.update_layout(
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
-        font={'color': "#E2E8F0"},
+        paper_bgcolor='#FFFFFF',
+        plot_bgcolor='#FFFFFF',
+        font={'color': "#000000", 'family': 'Outfit'},
         height=260,
         margin=dict(l=20, r=20, t=50, b=20)
     )
@@ -346,7 +396,7 @@ with tab1:
             gauge_placeholder.plotly_chart(get_plotly_gauge(crisp, th), use_container_width=True, key="gauge_active")
             
             lbl_color = "#378ADD" if label == "LOW" else "#EF9F27" if label == "MEDIUM" else "#E24B4A"
-            label_placeholder.markdown(f"<div style='text-align: center; font-size: 2.2rem; font-weight: bold; color: {lbl_color};'>INTENSITY: {label}</div>", unsafe_allow_html=True)
+            label_placeholder.markdown(f"<div style='text-align: center; font-size: 2rem; font-weight: 900; color: {lbl_color}; border: 3px solid #000000; border-radius: 8px; padding: 10px; background-color: #FFFFFF; box-shadow: 3px 3px 0px #000000; font-family: \"Outfit\", sans-serif;'>INTENSITY: {label}</div>", unsafe_allow_html=True)
             
             recs_placeholder.info(f"💡 **Coaching Tip:** {st.session_state.student.get_recommendation(label)}")
             
@@ -389,9 +439,11 @@ with tab1:
                 title="EMA Signal Preprocessing (Acc X)",
                 xaxis_title="Time in Window (s)",
                 yaxis_title="Acceleration (g)",
-                paper_bgcolor='#111625',
-                plot_bgcolor='#111625',
-                font=dict(color='#A0AEC0'),
+                paper_bgcolor='#FFFFFF',
+                plot_bgcolor='#FFFFFF',
+                font=dict(color='#000000', family='Outfit'),
+                xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+                yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
                 height=220,
                 margin=dict(l=10, r=10, t=30, b=10)
             )
@@ -406,9 +458,11 @@ with tab1:
                 title="Adaptive Threshold Shifts & Score Trajectory",
                 xaxis_title="Processed Window Number",
                 yaxis_title="Intensity Score (0–1)",
-                paper_bgcolor='#111625',
-                plot_bgcolor='#111625',
-                font=dict(color='#A0AEC0'),
+                paper_bgcolor='#FFFFFF',
+                plot_bgcolor='#FFFFFF',
+                font=dict(color='#000000', family='Outfit'),
+                xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+                yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
                 height=250,
                 margin=dict(l=10, r=10, t=35, b=10)
             )
@@ -434,7 +488,7 @@ with tab1:
             
             lbl = row_last['label']
             lbl_color = "#378ADD" if lbl == "LOW" else "#EF9F27" if lbl == "MEDIUM" else "#E24B4A"
-            label_placeholder.markdown(f"<div style='text-align: center; font-size: 2.2rem; font-weight: bold; color: {lbl_color};'>INTENSITY: {lbl}</div>", unsafe_allow_html=True)
+            label_placeholder.markdown(f"<div style='text-align: center; font-size: 2rem; font-weight: 900; color: {lbl_color}; border: 3px solid #000000; border-radius: 8px; padding: 10px; background-color: #FFFFFF; box-shadow: 3px 3px 0px #000000; font-family: \"Outfit\", sans-serif;'>INTENSITY: {lbl}</div>", unsafe_allow_html=True)
             
             recs_placeholder.info(f"💡 **Coaching Tip:** {st.session_state.student.get_recommendation(lbl)}")
             
@@ -477,9 +531,11 @@ with tab1:
                 title="EMA Signal Preprocessing (Acc X)",
                 xaxis_title="Time (samples)",
                 yaxis_title="Acceleration (g)",
-                paper_bgcolor='#111625',
-                plot_bgcolor='#111625',
-                font=dict(color='#A0AEC0'),
+                paper_bgcolor='#FFFFFF',
+                plot_bgcolor='#FFFFFF',
+                font=dict(color='#000000', family='Outfit'),
+                xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+                yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
                 height=220,
                 margin=dict(l=10, r=10, t=30, b=10)
             )
@@ -493,9 +549,11 @@ with tab1:
                 title="Adaptive Threshold Shifts & Score Trajectory",
                 xaxis_title="Processed Window Number",
                 yaxis_title="Intensity Score (0–1)",
-                paper_bgcolor='#111625',
-                plot_bgcolor='#111625',
-                font=dict(color='#A0AEC0'),
+                paper_bgcolor='#FFFFFF',
+                plot_bgcolor='#FFFFFF',
+                font=dict(color='#000000', family='Outfit'),
+                xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+                yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
                 height=250,
                 margin=dict(l=10, r=10, t=35, b=10)
             )
@@ -546,7 +604,7 @@ with tab2:
                 color_discrete_map={'LOW': '#378ADD', 'MEDIUM': '#EF9F27', 'HIGH': '#E24B4A'},
                 title="Intensity Label Distribution"
             )
-            fig_pie.update_layout(paper_bgcolor='#111625', font=dict(color='#A0AEC0'))
+            fig_pie.update_layout(paper_bgcolor='#FFFFFF', font=dict(color='#000000', family='Outfit'))
             st.plotly_chart(fig_pie, use_container_width=True)
             
         with col_chart2:
@@ -558,13 +616,13 @@ with tab2:
                 labels={'window': 'Window', 'cum_calories': 'Cumulative Calories (kcal)'},
                 title="Energy Expenditure Curve"
             )
-            fig_cal.update_traces(line_color='#9B5DE5', line_width=3)
+            fig_cal.update_traces(line_color='#E04B33', line_width=3)
             fig_cal.update_layout(
-                paper_bgcolor='#111625',
-                plot_bgcolor='#111625',
-                font=dict(color='#A0AEC0'),
-                xaxis=dict(showgrid=True, gridcolor='#2D3748'),
-                yaxis=dict(showgrid=True, gridcolor='#2D3748')
+                paper_bgcolor='#FFFFFF',
+                plot_bgcolor='#FFFFFF',
+                font=dict(color='#000000', family='Outfit'),
+                xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+                yaxis=dict(showgrid=True, gridcolor='#E2E8F0')
             )
             st.plotly_chart(fig_cal, use_container_width=True)
 
@@ -652,9 +710,11 @@ with tab3:
         title="Triangular Membership Functions (TMF)",
         xaxis_title="Normalized Attribute Value (0–1)",
         yaxis_title="Membership Degree (\u03bc)",
-        paper_bgcolor='#111625',
-        plot_bgcolor='#111625',
-        font=dict(color='#A0AEC0'),
+        paper_bgcolor='#FFFFFF',
+        plot_bgcolor='#FFFFFF',
+        font=dict(color='#000000', family='Outfit'),
+        xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+        yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
         height=320,
         margin=dict(l=20, r=20, t=40, b=20)
     )
@@ -705,9 +765,11 @@ with tab4:
             xaxis_title="Methodology",
             yaxis_title="Score (%)",
             yaxis_range=[85, 100],
-            paper_bgcolor='#111625',
-            plot_bgcolor='#111625',
-            font=dict(color='#A0AEC0'),
+            paper_bgcolor='#FFFFFF',
+            plot_bgcolor='#FFFFFF',
+            font=dict(color='#000000', family='Outfit'),
+            xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+            yaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
             barmode='group',
             height=340,
             margin=dict(l=20, r=20, t=55, b=20)
@@ -744,7 +806,13 @@ with tab4:
             title="Processing Latency Breakdown (Total: ~75ms per window)"
         )
         fig_lat.update_traces(marker_color='#028090')
-        fig_lat.update_layout(paper_bgcolor='#111625', plot_bgcolor='#111625', font=dict(color='#A0AEC0'))
+        fig_lat.update_layout(
+            paper_bgcolor='#FFFFFF', 
+            plot_bgcolor='#FFFFFF', 
+            font=dict(color='#000000', family='Outfit'),
+            xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+            yaxis=dict(showgrid=True, gridcolor='#E2E8F0')
+        )
         st.plotly_chart(fig_lat, use_container_width=True)
         
     with col_eff2:
@@ -759,5 +827,11 @@ with tab4:
             title="Wireless Protocol Energy Comparison"
         )
         fig_pow.update_traces(marker_color='#E24B4A', width=0.4)
-        fig_pow.update_layout(paper_bgcolor='#111625', plot_bgcolor='#111625', font=dict(color='#A0AEC0'))
+        fig_pow.update_layout(
+            paper_bgcolor='#FFFFFF', 
+            plot_bgcolor='#FFFFFF', 
+            font=dict(color='#000000', family='Outfit'),
+            xaxis=dict(showgrid=True, gridcolor='#E2E8F0'),
+            yaxis=dict(showgrid=True, gridcolor='#E2E8F0')
+        )
         st.plotly_chart(fig_pow, use_container_width=True)
