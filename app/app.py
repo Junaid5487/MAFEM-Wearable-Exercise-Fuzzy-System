@@ -152,7 +152,7 @@ st.markdown("""
 # ----------------------------------------------------
 # Sidebar Configuration
 # ----------------------------------------------------
-st.sidebar.image("https://img.icons8.com/clouds/150/000000/sports-watch.png", width=80)
+st.sidebar.image("app/logo.png", width=80)
 st.sidebar.header("Subject Profile")
 weight = st.sidebar.number_input("Weight (kg)", min_value=30.0, max_value=150.0, value=70.0, step=0.5)
 age = st.sidebar.number_input("Age (years)", min_value=10, max_value=100, value=22, step=1)
