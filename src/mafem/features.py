@@ -55,9 +55,9 @@ def extract_features(acc, gyr, hr, hr_raw, window_size=50,
         step_count = len(peaks)
 
         # 2. Speed - cumulative sum of acc magnitude (proxy)
-        if hasattr(np, 'trapezoid'):
+        try:
             speed = np.trapezoid(acc_mag) / window_size
-        else:
+        except AttributeError:
             speed = np.trapz(acc_mag) / window_size
 
         # 3. HRV - std of heart rate in window

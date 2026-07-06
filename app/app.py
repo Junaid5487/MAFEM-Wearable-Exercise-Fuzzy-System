@@ -140,7 +140,7 @@ st.markdown("""
 st.markdown("""
 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px;">
     <div style="background-color: #161B2D; border: 3px solid #D4AF37; border-radius: 12px; padding: 12px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 4px 4px 0px #000000;">
-        <span style="font-size: 2.2rem;">👑</span>
+        <span style="font-size: 2.2rem;">⌚</span>
     </div>
     <div>
         <h1 style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 3rem; color: #D4AF37; line-height: 1.1;">MAFEM</h1>
@@ -152,7 +152,7 @@ st.markdown("""
 # ----------------------------------------------------
 # Sidebar Configuration
 # ----------------------------------------------------
-st.sidebar.image("https://img.icons8.com/clouds/150/000000/crown.png", width=80)
+st.sidebar.image("https://img.icons8.com/clouds/150/000000/sports-watch.png", width=80)
 st.sidebar.header("Subject Profile")
 weight = st.sidebar.number_input("Weight (kg)", min_value=30.0, max_value=150.0, value=70.0, step=0.5)
 age = st.sidebar.number_input("Age (years)", min_value=10, max_value=100, value=22, step=1)
@@ -256,7 +256,7 @@ def get_plotly_gauge(score, threshold):
 # Tabs Layout
 # ----------------------------------------------------
 tab1, tab2, tab3, tab4 = st.tabs([
-    "👑 Royal Live Dashboard", 
+    "⌚ Live Simulation Dashboard", 
     "🏰 Session Analytics Summary", 
     "⚜️ Fuzzy Evaluation Model", 
     "🛡️ Baseline Benchmarks"
@@ -275,9 +275,9 @@ with tab1:
         # Setup simulation control buttons
         col_ctrl1, col_ctrl2, col_ctrl3 = st.columns([1, 1, 6])
         with col_ctrl1:
-            btn_play = st.button("👑 Begin Workout Simulation")
+            btn_play = st.button("⌚ Begin Workout Simulation")
         with col_ctrl2:
-            btn_reset = st.button("⚔️ Reset Workout Session")
+            btn_reset = st.button("🔄 Reset Workout Session")
 
         # Initialize Session State
         if 'sim_index' not in st.session_state or btn_reset:
